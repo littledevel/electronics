@@ -9,6 +9,12 @@
             margin: 5px;
             background-color: #f3f3f3
         }
+
+        .item_list{
+            margin-left: 10px;
+            margin-top: 1em;
+            margin-bottom: 1em;
+        }
         nav a {
             color: #d64161;
             font-size: 2em;
@@ -16,12 +22,14 @@
             text-decoration: none;
         }
 
+
     </style>
 </head>
 <body>
     <nav>
         <a href="{{ url_for('index') }}">Home</a>
         <a href="{{ url_for('items') }}">Store</a>
+        <a href="{{ url_for('create') }}">Create</a>
         <a href="#">About</a>
     </nav>
     <hr>

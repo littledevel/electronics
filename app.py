@@ -15,6 +15,16 @@ def add():
     store.add(StoreItem().marshal(request.json))
     return "OK"
 
+
+@app.route('/create', methods=["POST", "GET"])
+def create():
+    if request.method == 'POST':
+        name = request.form['item_name']
+        quantity = request.form['quantity']
+        description = request.form['description']
+
+    return render_template("create.html")
+
 @app.route('/items')
 def items():
     return render_template('items.html', store_items=store.get())

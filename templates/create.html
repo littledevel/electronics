@@ -2,23 +2,21 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h1>{% block title %} Add a New Message {% endblock %}</h1>
+    <h1>{% block title %} Add a New Item in the Store {% endblock %}</h1>
     <form method="post">
-        <label for="title">Title</label>
-        <br>
-        <input type="text" name="title"
-               placeholder="Message title"
-               value="{{ request.form['title'] }}"></input>
-        <br>
+        <div class="item_list">
+            <label for="item_name">Name</label>
+            <input type="text" name="item_name"
+                   placeholder="Name (unique)"
+                   value="{{ request.form['item_name'] }}"></input>
 
-        <label for="content">Message Content</label>
-        <br>
-        <textarea name="content"
-                  placeholder="Message content"
-                  rows="15"
-                  cols="60"
-                  >{{ request.form['content'] }}</textarea>
-        <br>
+        </div>
+        <div class="item_list">
+            <label for="description">Description</label>
+            <input type="text" name="description" placeholder="Description" width="120">
+                {{ request.form['description'] }}
+            </input>
+        </div>
         <button type="submit">Submit</button>
     </form>
 {% endblock %}
