@@ -1,0 +1,15 @@
+{%  extends 'base.html' %}
+
+{%  block content %}
+    <h1>{%  block title %} Items {% endblock %}</h1>
+    <table>
+    {% for _,v in store_items.items() %}
+        <tr>
+            <td>{{ v['name'] }}</td>
+            <td>{{ v['description'] }}</td>
+            <td>{{ v['qty'] }}</td>
+        </tr>
+    {% endfor %}
+    </table>
+
+{%  endblock %}

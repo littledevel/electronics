@@ -1,29 +1,24 @@
-from flask import Flask, request
+from flask import Flask, request, render_template
+from inventory import StoreItem, Store
 import json
-from inventory import Item,Inventory
 
 app = Flask(__name__)
 
-inv = Inventory()
-
-
+store = Store()
 
 @app.route('/')
-def welcome():  # put application's code here
-    return 'Welcome to Electronics Inventory'
+def index():  # put application's code here
+    return render_template("index.html")
 
+@app.route('/add', methods=["POST"])
+def add():
+    store.add(StoreItem().marshal(request.json))
+    return "OK"
 
 @app.route('/items')
-def get_items():
-    return inv.get_all()
+def items():
+    return render_template('items.html', store_items=store.get())
 
-
-@app.route('/add',methods=["POST"])
-def add_item():
-    item = Item()
-    item.marshal(request.json)
-    inv.put(item)
-    return "OK"
 
 
 if __name__ == '__main__':

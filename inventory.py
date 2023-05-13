@@ -1,47 +1,45 @@
-import random
 import json
 
-MAXITEMS = 100000
 
-
-class Item:
+class StoreItem:
 
     def __init__(self):
-        self.id = random.randint(0, MAXITEMS)
-        self.accepted_attrs = ["id", "name", "count", "description"]
-
-    def __str__(self):
-        return json.dumps(self.__dict__, indent=2)
+        self.data = {}
 
     def marshal(self, json_data):
-        for k, v in json_data.items():
-            if k in self.accepted_attrs:
-                self.__dict__[k] = v
+        self.data = json_data
+        return self.data
 
-class Inventory:
+    def __str__(self):
+        return self.data
+
+
+class Store:
 
     def __init__(self):
-        self.inventory = {}
-        self.filename = "inventory.json"
-        self.items = []
+        self.store_items = {}
+        self.filename = "store.json"
+        self.json_file = None
         self.load_from_file()
 
-    def marshal(self):
-        self.items = [str(v) for _, v in self.inventory.items()]
+    def store_to_file(self):
+        try:
+            with open(self.filename,'w+') as self.json_file:
+                json.dump(self.store_items, self.json_file)
+        except Exception as e:
+            print(e)
 
     def load_from_file(self):
-        with open(self.filename, "r") as json_file:
-            self.inventory = json.load(json_file)
+        try:
+            with open(self.filename,'r') as self.json_file:
+                self.store_items = json.load(self.json_file)
+        except Exception as e:
+            print(e)
 
-    def put(self, item: Item):
-        self.inventory[item.id] = item
-        self.marshal()
-        with open(self.filename, "w+") as json_file:
-            json.dump(self.inventory, json_file)
+    def add(self, item):
+        self.store_items[item["name"]] = item
+        self.store_to_file()
 
-    def get(self, id):
-        return self.inventory[id]
 
-    def get_all(self):
-        self.marshal()
-        return self.items
+    def get(self):
+        return self.store_items
