@@ -1,8 +1,9 @@
-from flask import Flask, request, render_template
+from flask import Flask, request, render_template, url_for, flash, redirect
 from inventory import StoreItem, Store
 import json
 
 app = Flask(__name__)
+app.config['SECRET_KEY'] = "TA TRIA GOURONUAKA"
 
 store = Store()
 
@@ -22,7 +23,8 @@ def create():
         name = request.form['item_name']
         quantity = request.form['quantity']
         description = request.form['description']
-
+        #store.add(StoreItem().marshal("Some json of the above"))
+        return redirect(url_for('index'))
     return render_template("create.html")
 
 @app.route('/items')
