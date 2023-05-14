@@ -7,7 +7,7 @@ app.config['SECRET_KEY'] = "TA TRIA GOURONUAKA"
 
 store = Store()
 
-@app.route('/')
+@app.route('/', methods=["POST", "GET"])
 def index():  # put application's code here
     return render_template("index.html")
 
@@ -19,11 +19,12 @@ def add():
 
 @app.route('/create', methods=["POST", "GET"])
 def create():
+    data = {}
     if request.method == 'POST':
-        name = request.form['item_name']
-        quantity = request.form['quantity']
-        description = request.form['description']
-        #store.add(StoreItem().marshal("Some json of the above"))
+        data["name"] = request.form['item_name']
+        data["quantity"] = request.form['quantity']
+        data["description"] = request.form['description']
+        store.add(StoreItem().set_data(data))
         return redirect(url_for('index'))
     return render_template("create.html")
 

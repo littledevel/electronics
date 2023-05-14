@@ -17,6 +17,13 @@
                 {{ request.form['description'] }}
             </input>
         </div>
+        <div class="quantity">
+            <label for="quantity">Quantity</label>
+            <input type="number" min="1" max="1000" name="quantity">
+                {{ request.form['quantity'] }}
+            </input>
+            <label></label>
+        </div>
         <button type="submit">Submit</button>
     </form>
 {% endblock %}

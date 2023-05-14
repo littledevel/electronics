@@ -6,8 +6,12 @@ class StoreItem:
     def __init__(self):
         self.data = {}
 
-    def marshal(self, json_data):
+    def marshal(self, json_data: dict):
         self.data = json_data
+        return self.data
+
+    def set_data(self, data: dict):
+        self.data = data
         return self.data
 
     def __str__(self):
@@ -39,7 +43,6 @@ class Store:
     def add(self, item):
         self.store_items[item["name"]] = item
         self.store_to_file()
-
 
     def get(self):
         return self.store_items
