@@ -4,22 +4,38 @@
     <meta charset="UTF-8">
     <title>{% block title %} {% endblock %} Electronics Inventory</title>
     <style>
-        .message {
-            padding: 10px;
-            margin: 5px;
-            background-color: #f3f3f3
-        }
-
-        .item_list{
-            margin-left: 10px;
-            margin-top: 1em;
-            margin-bottom: 1em;
+        html {
+            font-family: Ubuntu, Arial, FreeSans, serif;
         }
         nav a {
             color: #d64161;
             font-size: 2em;
             margin-left: 50px;
             text-decoration: none;
+        }
+        .item_list table {
+            font-size: 1em;
+            text-align: left;
+        }
+
+        .item_list tr:hover{
+            background-color: lightgray;
+        }
+        .item_list th {
+            width: 20%;
+            margin-top: 1em;
+            margin-bottom: 1em;
+            text-align: left;
+            border-bottom: 3px solid lightblue;
+        }
+        .item_list td{
+            width: 20%;
+            margin-top: 1em;
+            margin-bottom: 1em;
+            border: 1px solid lightgreen;
+        }
+        .item_list td.quantity,th.quantity {
+            text-align: center;
         }
 
 
