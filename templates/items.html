@@ -10,7 +10,7 @@
             <th class="quantity">Quantity</th>
         </tr>
         {% for _,v in store_items.items() %}
-            <tr>
+            <tr class="table_row">
                 <td>{{ v['name'] }}</td>
                 <td>{{ v['description'] }}</td>
                 <td class="quantity">{{ v['quantity'] }}</td>

@@ -8,22 +8,27 @@
             <label for="item_name">Name</label>
             <input type="text" name="item_name"
                    placeholder="Name (unique)"
-                   value="{{ request.form['item_name'] }}"></input>
-
+                   class="name"
+                   value="{{ request.form['item_name'] }}"/>
         </div>
         <div class="item_list">
             <label for="description">Description</label>
-            <input type="text" name="description" placeholder="Description" width="120">
+            <input type="text" name="description"
+                   class="description"
+                   placeholder="Description" width="120"/>
                 {{ request.form['description'] }}
             </input>
         </div>
-        <div class="quantity">
+        <div class="item_list">
             <label for="quantity">Quantity</label>
-            <input type="number" min="1" max="1000" name="quantity">
+            <input type="number" min="1" max="1000"
+                   class="quantity"
+                   name="quantity"/>
                 {{ request.form['quantity'] }}
-            </input>
-            <label></label>
+
         </div>
-        <button type="submit">Submit</button>
+        <div class="submit">
+            <button type="submit">Submit</button>
+        </div>
     </form>
 {% endblock %}
