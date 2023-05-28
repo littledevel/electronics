@@ -9,8 +9,17 @@
     <nav>
         <a href="{{ url_for('index') }}">Home</a>
         <a href="{{ url_for('items') }}">Store</a>
-        <a href="{{ url_for('create') }}">Create</a>
-        <a href="#">About</a>
+        <div class="dropdown_manage">
+        <a href="#">Manage</a>
+            <div class="dropdown_manage_content">
+                <a href="create.html" class="create">Create</a>
+                <a href="create.html" class="create">Update</a>
+                <a href="create.html" class="create">Delete</a>
+
+             </div>
+        </div>
+
+        <a href="#">Help</a>
     </nav>
     <hr>
     <div class="content">

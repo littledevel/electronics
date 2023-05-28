@@ -11,9 +11,8 @@ store = Store()
 def index():  # put application's code here
     return render_template("index.html")
 
-@app.route('/add', methods=["POST"])
-def add():
-    store.add(StoreItem().marshal(request.json))
+@app.route('/manage', methods=["GET"])
+def manage():
     return "OK"
 
 
