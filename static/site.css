@@ -4,8 +4,8 @@ html {
 nav a {
     color: #d64161;
     font-size: 2em;
-    margin-left: 50px;
     text-decoration: none;
+    margin-left: 50px;
 }
 .item_list table {
     font-size: 1em;
@@ -63,21 +63,27 @@ div.submit button{
 div.dropdown_manage {
     display:inline-block;
     position: relative;
-    
 }
 
 div.dropdown_manage_content {
     display: none;
-    position:absolute;
+    position: absolute;
     z-index: 1;
-    background-color: lightgray;
-    min-width: 80px;
+    background-color: whitesmoke;
+    min-width: 100px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-   # padding: 12px 16px;
+    padding: 2px 2px;
+    margin-left: 10px;
 }
 
-div.dropdown_manage_content a{
-   font-size: 1.4em;
+a.dropdown_manage_content{
+    font-size: 1.4em;
+    color: lightcoral;
+    margin: 1.1em 0px 1.1em 40px;
+}
+
+a.dropdown_manage_content:hover {
+    color: darkblue;
 }
 
 
