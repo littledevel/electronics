@@ -12,6 +12,7 @@
         {% for _,v in store_items.items() %}
             <tr class="table_row">
                 <td>{{ v['name'] }}</td>
+                <td>{{ v['category'] }}</td>
                 <td>{{ v['description'] }}</td>
                 <td class="quantity">{{ v['quantity'] }}</td>
             </tr>
