@@ -3,7 +3,32 @@ import os
 import sys
 from db_interface import DatabaseEngine
 
-
+store_categories = [
+    "LED",
+    "CAPACITOR",
+    "RESISTOR",
+    "SWITCH",
+    "MICRO",
+    "GATE",
+    "DIODE",
+    "MOTOR",
+    "DRIVER",
+    "TRANSISTOR",
+    "POTENSIOMETER",
+    "MULTIPLEXER",
+    "POTENSIOMETER",
+    "PHOTOSENSOR",
+    "BOARD",
+    "AUDIOSENSOR",
+    "MATRIX",
+    "LCD",
+    "BLUETOOTH",
+    "RF",
+    "SENSOR",
+    "STEPPER",
+    "TRIMMER",
+    "PHOTOSENSOR",
+]
 class StoreItem:
 
     def __init__(self):

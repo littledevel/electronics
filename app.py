@@ -1,5 +1,5 @@
 from flask import Flask, request, render_template, url_for, flash, redirect
-from db_json import Store
+from db_json import Store,store_categories
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = "TA TRIA GOURONUAKA"
@@ -28,7 +28,7 @@ def create():
                                    error="Store items should have at least a name, please press Back and reenter item data")
         store.put(data)
         return redirect(url_for('index'))
-    return render_template("create.html")
+    return render_template("create.html", option_list=sorted(store_categories))
 
 
 @app.route('/items')

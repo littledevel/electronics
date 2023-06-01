@@ -2,7 +2,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1 xmlns="http://www.w3.org/1999/html">{% block title %} Add a New Item in the Store {% endblock %}</h1>
+<h1>{% block title %} Add a New Item in the Store {% endblock %}</h1>
     <form method="post">
         <div class="item_list">
             <label for="item_name">Name</label>
@@ -20,36 +20,16 @@
             </input>
         </div>
         <div class="item_list">
-            <!--label for="category">Category</label>
-            <input type="text" name="category"
+            <!--input type="text" name="category"
                    class="category"
                    placeholder="Category" width="120"/>
                 {{ request.form['category'] }}
             </input-->
+            <label for="category">Category</label>
             <select name="category">
-                <option value="led">LED</option>
-                <option value="capacitor">CAPACITOR</option>
-                <option value="resistor">RESISTOR</option>
-                <option value="switch">SWITCH</option>
-                <option value="micro">MICRO</option>
-                <option value="gate">GATE</option>
-                <option value="diode">DIODE</option>
-                <option value="motor_driver">MOTOR DRIVER</option>
-                <option value="transistor">TRANSISTOR</option>
-                <option value="potensiometer">POTENSIOMETER</option>
-                <option value="multiplexer">MULTIPLEXER</option>
-                <option value="crystal">POTENSIOMETER</option>
-                <option value="photosensor">PHOTOSENSOR</option>
-                <option value="board">BOARD</option>
-                <option value="audiosensor">AUDIOSENSOR</option>
-                <option value="matrix">MATRIX</option>
-                <option value="lcd">LCD</option>
-                <option value="bluetooth">BLUETOOTH</option>
-                <option value="rf">RF</option>
-                <option value="sensor">SENSOR</option>
-                <option value="stepper">STEPPER</option>
-                <option value="trimmer">TRIMMER</option>
-                <option value="photosensor">PHOTOSENSOR</option>
+                {% for option in option_list %}
+                    <option name="{{ option }} ">{{ option }}</option>
+                {% endfor %}
             </select>
         </div>
         <div class="item_list">
