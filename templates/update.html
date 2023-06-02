@@ -2,13 +2,13 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>{% block title %} Add a New Item in the Store {% endblock %}</h1>
+<h1>{% block title %} Update an Item in the Store {% endblock %}</h1>
     <form method="post">
     <div class="item_list">
         <label class="category">Category</label>
         <select name="category">
             {% for option in option_list %}
-                <option name="{{ option }} ">{{ option }}</option>
+                <option name="{{ option }}" value="{{ store_item['category'] }}">{{ option }}</option>
             {% endfor %}
         </select>
     </div>
@@ -16,7 +16,7 @@
         <label class="description">Description</label>
         <input type="text" name="description"
                class="description"
-               placeholder="Description" width="120"/>
+               placeholder="{{ store_item['description'] }}" width="120"/>
             {{ request.form['description'] }}
         </input>
     </div>
@@ -24,6 +24,7 @@
         <label class="quantity">Quantity</label>
         <input type="number" min="1" max="1000"
                class="quantity"
+               placeholder="{{ store_item['quantity'] }}"
                name="quantity"/>
             {{ request.form['quantity'] }}
 

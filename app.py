@@ -1,9 +1,10 @@
 from flask import Flask, request, render_template, url_for, flash, redirect
-from db_json import Store,store_categories
+from db_json import JSON_Store
+from db_interface import DatabaseModel
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = "TA TRIA GOURONUAKA"
-store = Store()
+store = JSON_Store()
 
 
 @app.route('/', methods=["POST", "GET"])
@@ -15,20 +16,28 @@ def index():  # put application's code here
 def manage():
     return "OK"
 
-
 @app.route('/create', methods=["POST", "GET"])
 def create():
     data = {}
     if request.method == 'POST':
-        data["name"] = request.form['item_name']
         data["quantity"] = request.form['quantity']
+        data["category"] = request.form['category']
         data["description"] = request.form['description']
-        if len(data["name"]) < 1:
-            return render_template("error.html",
-                                   error="Store items should have at least a name, please press Back and reenter item data")
         store.put(data)
         return redirect(url_for('index'))
-    return render_template("create.html", option_list=sorted(store_categories))
+    return render_template("create.html", option_list=sorted(DatabaseModel().store_categories))
+
+@app.route('/update', methods=["GET","POST"])
+def update():
+    data = {}
+    if request.method == 'POST':
+        data["quantity"] = request.form['quantity']
+        data["category"] = request.form['category']
+        data["description"] = request.form['description']
+        store.put(data)
+        return redirect(url_for('index'))
+    return render_template("update.html", store_item=store.get()[request.args["id"]],
+                           option_list=sorted(DatabaseModel().store_categories))
 
 
 @app.route('/items')

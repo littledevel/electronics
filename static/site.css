@@ -32,6 +32,20 @@ tr.table_row:hover{
     text-align: center;
 }
 
+.item_list td.edit {
+    border-width: 0;
+    width: 5%;
+    text-align: center;
+    background-color: #FFFFFF;
+}
+
+.item_list td.edit:hover {
+    background-color: #FFFFFF;
+}
+.item_list td.edit a {
+    text-decoration: none;
+}
+
 div.item_list label {
     display: inline-block;
     width: 100px;

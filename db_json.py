@@ -1,55 +1,12 @@
 import json
 import os
 import sys
-from db_interface import DatabaseEngine
+from db_interface import DatabaseEngine,DatabaseModel
 
-store_categories = [
-    "LED",
-    "CAPACITOR",
-    "RESISTOR",
-    "SWITCH",
-    "MICRO",
-    "GATE",
-    "DIODE",
-    "MOTOR",
-    "DRIVER",
-    "TRANSISTOR",
-    "POTENSIOMETER",
-    "MULTIPLEXER",
-    "POTENSIOMETER",
-    "PHOTOSENSOR",
-    "BOARD",
-    "AUDIOSENSOR",
-    "MATRIX",
-    "LCD",
-    "BLUETOOTH",
-    "RF",
-    "SENSOR",
-    "STEPPER",
-    "TRIMMER",
-    "PHOTOSENSOR",
-]
-class StoreItem:
-
-    def __init__(self):
-        self.data = {}
-
-    def marshal(self, json_data: dict):
-        self.data = json_data
-        return self.data
-
-    def set_data(self, data: dict):
-        self.data = data
-        return self.data
-
-    def __str__(self):
-        return self.data
-
-
-class Store(DatabaseEngine):
+class JSON_Store(DatabaseEngine):
     def __init__(self):
         super().__init__()
-        self.store_items = {}
+        self.storage = {}
         self.filename = "store.json"
         self.json_file = None
         if not os.path.isfile(self.filename):
@@ -60,22 +17,23 @@ class Store(DatabaseEngine):
     def store_to_file(self):
         try:
             with open(self.filename, 'w+') as self.json_file:
-                json.dump(self.store_items, self.json_file)
+                json.dump(self.storage, self.json_file)
         except Exception as e:
             print(e)
 
     def load_from_file(self):
         try:
             with open(self.filename, 'r+') as self.json_file:
-                self.store_items = json.load(self.json_file)
+                self.storage = json.load(self.json_file)
         except Exception as e:
             print(f"Error opening file: {e}")
             sys.exit(os.EX_IOERR)
 
     def put(self, data):
-        store_item = StoreItem().set_data(data)
-        self.store_items[store_item["name"]] = store_item
+        store_item = DatabaseModel()
+        store_item.unmarshal(data)
+        self.storage[store_item.data["hash"]] = store_item.marshal()
         self.store_to_file()
 
     def get(self):
-        return self.store_items
+        return self.storage
