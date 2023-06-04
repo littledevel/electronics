@@ -12,10 +12,6 @@ def index():  # put application's code here
     return render_template("index.html")
 
 
-@app.route('/manage', methods=["GET"])
-def manage():
-    return "OK"
-
 @app.route('/create', methods=["POST", "GET"])
 def create():
     data = {}
@@ -24,7 +20,7 @@ def create():
         data["category"] = request.form['category']
         data["description"] = request.form['description']
         store.put(data)
-        return redirect(url_for('index'))
+        return redirect(url_for('items'))
     return render_template("create.html", option_list=sorted(DatabaseModel().store_categories))
 
 @app.route('/update', methods=["GET","POST"])
@@ -35,9 +31,15 @@ def update():
         data["category"] = request.form['category']
         data["description"] = request.form['description']
         store.put(data)
-        return redirect(url_for('index'))
+        return redirect(url_for('items'))
+    store_item = store.get()[request.args["id"]]
     return render_template("update.html", store_item=store.get()[request.args["id"]],
                            option_list=sorted(DatabaseModel().store_categories))
+
+@app.route('/delete', methods=["GET","POST"])
+def delete():
+    store.delete(request.args["id"])
+    return render_template('items.html', store_items=store.get())
 
 
 @app.route('/items')

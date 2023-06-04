@@ -1,5 +1,6 @@
 html {
-    font-family: Ubuntu, Arial, FreeSans, serif;
+#    font-family: Ubuntu, Arial, FreeSans, serif;
+    font-family: 'Consolas', 'Menlo', 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', monospace;
 }
 nav a {
     color: #d64161;
@@ -104,4 +105,15 @@ a.dropdown_manage_content:hover {
 div.dropdown_manage:hover div.dropdown_manage_content {
     display: block;
 }
+
+div.create{
+    margin-top: 20px;
+}
+
+div.create a{
+    text-decoration: none;
+    font-size: 1.2em;
+    font-family: 'Consolas', 'Menlo', 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', monospace;
+}
+
 

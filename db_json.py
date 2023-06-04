@@ -37,3 +37,7 @@ class JSON_Store(DatabaseEngine):
 
     def get(self):
         return self.storage
+
+    def delete(self, hash):
+        self.storage.pop(hash)
+        self.store_to_file()
