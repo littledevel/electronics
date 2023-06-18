@@ -31,7 +31,14 @@
                value="{{ store_item['quantity'] }}"
                name="quantity"/>
             {{ request.form['quantity'] }}
-
+    </div>
+    <div class="item_list">
+        <label class="link">Link</label>
+        <input type="text" name="link"
+               class="link"
+               value="{{ store_item['link'] }}" width="120"/>
+            {{ request.form['link'] }}
+        </input>
     </div>
     <div class="submit">
             <button type="submit">Submit</button>

@@ -19,6 +19,7 @@ def create():
         data["quantity"] = request.form['quantity']
         data["category"] = request.form['category']
         data["description"] = request.form['description']
+        data["link"] = request.form['link']
         store.put(data)
         return redirect(url_for('items'))
     return render_template("create.html", option_list=sorted(DatabaseModel().store_categories))
@@ -30,6 +31,7 @@ def update():
         data["quantity"] = request.form['quantity']
         data["category"] = request.form['category']
         data["description"] = request.form['description']
+        data["link"] = request.form['link']
         store.put(data)
         return redirect(url_for('items'))
     store_item = store.get()[request.args["id"]]
@@ -45,6 +47,11 @@ def delete():
 @app.route('/items')
 def items():
     return render_template('items.html', store_items=store.get())
+
+
+@app.route('/about')
+def about():
+    return render_template('about.html')
 
 
 if __name__ == '__main__':

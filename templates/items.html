@@ -8,12 +8,14 @@
             <th>Category</th>
             <th>Description</th>
             <th class="quantity">Quantity</th>
+            <th>Link</th>
         </tr>
         {% for _,v in store_items.items() %}
             <tr class="table_row">
                 <td>{{ v['category'] }}</td>
                 <td>{{ v['description'] }}</td>
                 <td class="quantity">{{ v['quantity'] }}</td>
+                <td><a href="{{ v['link'] }}">External Info</a></td>
                 <td class="edit"><a href="/update?id={{ v['hash'] }}">&#9998;</a></td>
                 <td class="edit"><a href="/delete?id={{ v['hash'] }}">&#x1F5D1;</a></td>
             </tr>

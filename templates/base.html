@@ -2,15 +2,14 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>{% block title %} {% endblock %} Electronics Inventory</title>
+    <title>{% block title %} {% endblock %} Inventory</title>
     <link rel="stylesheet" type="text/css" href="static/site.css">
 </head>
 <body>
     <nav>
         <a href="{{ url_for('index') }}">Home</a>
-        <a href="{{ url_for('items') }}">Store</a>
-
-        <a href="#">Help</a>
+        <a href="{{ url_for('items') }}">Items</a>
+        <a href="{{ url_for('about') }}">About</a>
     </nav>
     <hr>
     <div class="content">

@@ -1,1 +1,21 @@
 {%  extends 'base.html' %}
+{% block content %}
+    <h3>Inventory</h3>
+    <p>This website is a simple inventory for materials like electronic items or screws.</p>
+    <p>The usage is simple, it creates a simple text based json "db" like file and stores all items inside it.</p>
+    <p>You can simply store it in a git repo and keep it updated with simple commits.</p>
+    <p>It does not have to connect to any other database, or any kind of other connection.</p>
+
+    <h3>How it works</h3>
+    <p>Simply populate the "categories.json" file with the kinds of items you want to store, and you are ready to go.</p>
+    <p>Hit the "Items" menu to add,remove update items in your "db".</p>
+
+    <h3>A bit of warning!</h3>
+    <p>Since the purpose of this simple app is just to facilitate a small inventory, it is not designed to create backups,
+    store items safely or anything like that. If you delete something from the file and you do not commit your changes,
+    your item is lost forever.</p>
+
+    <h3>Enjoy !</h3>
+
+
+{%  endblock %}

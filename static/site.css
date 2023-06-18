@@ -1,5 +1,4 @@
 html {
-#    font-family: Ubuntu, Arial, FreeSans, serif;
     font-family: 'Consolas', 'Menlo', 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', monospace;
 }
 nav a {
@@ -13,9 +12,23 @@ nav a {
     text-align: left;
 }
 
+.content a{
+    text-decoration: none;
+    color: royalblue;
+}
+
+.content a:hover {
+    color: mediumorchid;
+}
+
+.content a:visited {
+    color: cornflowerblue;
+}
+
 tr.table_row:hover{
     background-color: lightgray;
 }
+
 .item_list th {
     width: 20%;
     margin-top: 1em;
@@ -53,9 +66,9 @@ div.item_list label {
 }
 
 div.item_list input {
-    width: auto;
     margin-top: 0.5em;
     margin-bottom: 1em;
+    max-width: 800px;
 }
 
 div.item_list input.description {
@@ -68,6 +81,10 @@ div.item_list input.name {
 
 div.item_list input.quantity {
     width: 100px;
+}
+
+div.item_list input.link {
+    width: 200px;
 }
 
 div.submit button{
