@@ -34,7 +34,6 @@ def update():
         data["link"] = request.form['link']
         store.put(data)
         return redirect(url_for('items'))
-    store_item = store.get()[request.args["id"]]
     return render_template("update.html", store_item=store.get()[request.args["id"]],
                            option_list=sorted(DatabaseModel().store_categories))
 
