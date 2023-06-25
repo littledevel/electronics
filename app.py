@@ -18,7 +18,7 @@ def create():
     if request.method == 'POST':
         data["quantity"] = request.form['quantity']
         data["category"] = request.form['category']
-        data["description"] = request.form['description']
+        data["description"] = request.form['description'].upper()
         data["link"] = request.form['link']
         store.put(data)
         return redirect(url_for('items'))
@@ -30,7 +30,7 @@ def update():
     if request.method == 'POST':
         data["quantity"] = request.form['quantity']
         data["category"] = request.form['category']
-        data["description"] = request.form['description']
+        data["description"] = request.form['description'].upper()
         data["link"] = request.form['link']
         store.put(data)
         return redirect(url_for('items'))

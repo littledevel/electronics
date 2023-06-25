@@ -7,9 +7,9 @@ class DatabaseModel:
         self.data = {}
         try:
             with open("categories.json", 'r') as categories_file:
-                self.store_categories = json.load(categories_file)
+                self.store_categories = sorted(set(json.load(categories_file)))
         except FileNotFoundError:
-            self.store_categories = []
+            self.store_categories = ()
 
     def unmarshal(self, data):
         self.data["category"] = data["category"]
